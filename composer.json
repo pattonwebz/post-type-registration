@@ -9,5 +9,10 @@
             "email": "will@pattonwebz.com"
         }
     ],
+	"autoload": {
+		"files": [
+			"AbstractPostType.php"
+		]
+	},
     "require": {}
 }

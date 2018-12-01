@@ -2,7 +2,7 @@
     "name": "pattonwebz/post-type-registration",
     "description": "A base class for extending when setting up post types.",
     "type": "library",
-    "license": "GPLv2+",
+    "license": "GPL-2.0-or-later",
     "authors": [
         {
             "name": "William Patton",

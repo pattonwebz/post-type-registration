@@ -106,7 +106,7 @@ abstract class AbstractPostType {
 	 *
 	 * @since  0.1.0
 	 */
-	protected function register_cpt() {
+	public function register_cpt() {
 		if ( ! post_type_exists( $this->name ) ) {
 			register_post_type( $this->name, $this->get_args() );
 		}

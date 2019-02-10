@@ -97,8 +97,10 @@ abstract class AbstractPostType {
 		$name   = ( isset( $labels['menu_name'] ) ) ? $labels['menu_name'] : ucfirst( $this->name );
 
 		return ( ! empty( $this->args ) ) ? $this->args : [
-			'label'  => $name,
-			'labels' => $labels,
+			'post_type' => $name,
+			'label'     => $name,
+			'labels'    => $labels,
+			'public'    => true,
 		];
 	}
 	/**

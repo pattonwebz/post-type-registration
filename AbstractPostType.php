@@ -79,7 +79,7 @@ abstract class AbstractPostType {
 	 */
 	public function get_labels() {
 
-		return ( ! empty( $this->$labels ) ) ? $this->$labels : [
+		return ( ! empty( $this->labels ) ) ? $this->labels : [
 			'name' => $this->name,
 		];
 	}

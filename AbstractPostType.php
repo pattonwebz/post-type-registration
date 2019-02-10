@@ -7,7 +7,7 @@
  * class before calling 'register'.
  *
  * @package   PattonWebz Post Type Registration Class
- * @version   0.2.0
+ * @version   0.2.1
  * @since     0.1.0
  * @author    William Patton <will@pattonwebz.com>
  * @copyright Copyright (c) 2018-2019, William Patton
@@ -81,7 +81,7 @@ abstract class AbstractPostType {
 	public function get_labels() {
 
 		return ( ! empty( $this->labels ) ) ? $this->labels : [
-			'name' => $this->name,
+			'name' => ucfirst( $this->name ),
 		];
 	}
 
@@ -95,7 +95,7 @@ abstract class AbstractPostType {
 	 */
 	public function get_args() {
 		$labels = $this->get_labels();
-		$name   = ( isset( $labels['menu_name'] ) ) ? $labels['menu_name'] : ucfirst( $this->name );
+		$name   = ( isset( $labels['menu_name'] ) ) ? $labels['menu_name'] : $this->name;
 
 		return ( ! empty( $this->args ) ) ? $this->args : [
 			'post_type' => $name,

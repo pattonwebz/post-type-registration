@@ -7,9 +7,10 @@
  * class before calling 'register'.
  *
  * @package   PattonWebz Post Type Registration Class
+ * @version   0.2.0
  * @since     0.1.0
  * @author    William Patton <will@pattonwebz.com>
- * @copyright Copyright (c) 2018, William Patton
+ * @copyright Copyright (c) 2018-2019, William Patton
  * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 

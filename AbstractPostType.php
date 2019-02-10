@@ -7,7 +7,7 @@
  * class before calling 'register'.
  *
  * @package   PattonWebz Post Type Registration Class
- * @version   0.2.0
+ * @version   0.2.2-dev
  * @since     0.1.0
  * @author    William Patton <will@pattonwebz.com>
  * @copyright Copyright (c) 2018-2019, William Patton
@@ -47,6 +47,22 @@ abstract class AbstractPostType {
 	 * @var array
 	 */
 	public $labels = [];
+
+	/**
+	 * Sets up the properties for use when registering.
+	 *
+	 * @method __construct
+	 * @since  0.2.2
+	 * @param  array $args   The array of args to use when registering the CPT.
+	 * @param  array $labels A custom labels array to use when registering the
+	 *                       post. NOTE: If you are passing a custom $args array
+	 *                       then this will not be included automatticaly so
+	 *                       include it in $args['labels'] directly.
+	 */
+	public function __construct( array $args = [], array $labels = [] ) {
+		$this->labels = ( ! empty( $labels ) ) ? $labels : $this->get_labels();
+		$this->args   = ( ! empty( $args ) ) ? $args : $this->get_args();
+	}
 
 	/**
 	 * Hook in and register the post type.
@@ -94,13 +110,11 @@ abstract class AbstractPostType {
 	 * @return array
 	 */
 	public function get_args() {
-		$labels = $this->get_labels();
-		$name   = ( isset( $labels['menu_name'] ) ) ? $labels['menu_name'] : ucfirst( $this->name );
+		$name = ( isset( $labels['menu_name'] ) ) ? $labels['menu_name'] : $this->name;
 
 		return ( ! empty( $this->args ) ) ? $this->args : [
 			'post_type' => $name,
-			'label'     => $name,
-			'labels'    => $labels,
+			'labels'    => $this->labels,
 			'public'    => true,
 		];
 	}

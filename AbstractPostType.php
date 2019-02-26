@@ -122,6 +122,7 @@ abstract class AbstractPostType {
 		return ( ! empty( $this->args ) ) ? $this->args : [
 			'post_type' => $name,
 			'labels'    => $this->labels,
+			'menu_icon' => ( ! empty( $this->icon ) ) ? $this->icon : 'dashicons-admin-post',
 			'public'    => true,
 		];
 	}

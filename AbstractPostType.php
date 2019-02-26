@@ -26,6 +26,7 @@ abstract class AbstractPostType {
 	/**
 	 * The identifier for this post type.
 	 *
+	 * @since  0.1.0
 	 * @var string
 	 */
 	public $name = 'post';
@@ -35,6 +36,7 @@ abstract class AbstractPostType {
 	 *
 	 * NOTE: This is PHP 7+ only.
 	 *
+	 * @since  0.1.0
 	 * @var array
 	 */
 	public $args = [];
@@ -44,6 +46,7 @@ abstract class AbstractPostType {
 	 *
 	 * NOTE: This is PHP 7+ only.
 	 *
+	 * @since  0.1.0
 	 * @var array
 	 */
 	public $labels = [];

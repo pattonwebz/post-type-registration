@@ -32,9 +32,15 @@ abstract class AbstractPostType {
 	public $name = 'post';
 
 	/**
-	 * The arguments used when registering this post type.
+	 * Icon to use for this post type.
 	 *
-	 * NOTE: This is PHP 7+ only.
+	 * @since 0.2.2
+	 * @var string
+	 */
+	public $icon = 'dashicons-admin-post';
+
+	/**
+	 * The arguments used when registering this post type.
 	 *
 	 * @since  0.1.0
 	 * @var array
@@ -43,8 +49,6 @@ abstract class AbstractPostType {
 
 	/**
 	 * The arguments used when registering this post type.
-	 *
-	 * NOTE: This is PHP 7+ only.
 	 *
 	 * @since  0.1.0
 	 * @var array

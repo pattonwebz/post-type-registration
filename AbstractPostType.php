@@ -117,11 +117,13 @@ abstract class AbstractPostType {
 	 * @return array
 	 */
 	public function get_args() {
-		$name = ( isset( $labels['menu_name'] ) ) ? $labels['menu_name'] : $this->name;
+		$labels = $this->get_labels();
+		$name   = ( isset( $labels['menu_name'] ) ) ? $labels['menu_name'] : $this->name;
 
 		return ( ! empty( $this->args ) ) ? $this->args : [
 			'post_type' => $name,
-			'labels'    => $this->labels,
+			'label'     => $name,
+			'labels'    => $labels,
 			'menu_icon' => ( ! empty( $this->icon ) ) ? $this->icon : 'dashicons-admin-post',
 			'public'    => true,
 		];

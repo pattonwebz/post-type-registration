@@ -7,7 +7,7 @@
  * class before calling 'register'.
  *
  * @package   PattonWebz Post Type Registration Class
- * @version   0.2.1
+ * @version   0.2.2
  * @since     0.1.0
  * @author    William Patton <will@pattonwebz.com>
  * @copyright Copyright (c) 2018-2019, William Patton
@@ -26,15 +26,23 @@ abstract class AbstractPostType {
 	/**
 	 * The identifier for this post type.
 	 *
+	 * @since  0.1.0
 	 * @var string
 	 */
 	public $name = 'post';
 
 	/**
+	 * Icon to use for this post type.
+	 *
+	 * @since 0.2.2
+	 * @var string
+	 */
+	public $icon = 'dashicons-admin-post';
+
+	/**
 	 * The arguments used when registering this post type.
 	 *
-	 * NOTE: This is PHP 7+ only.
-	 *
+	 * @since  0.1.0
 	 * @var array
 	 */
 	public $args = [];
@@ -42,11 +50,26 @@ abstract class AbstractPostType {
 	/**
 	 * The arguments used when registering this post type.
 	 *
-	 * NOTE: This is PHP 7+ only.
-	 *
+	 * @since  0.1.0
 	 * @var array
 	 */
 	public $labels = [];
+
+	/**
+	 * Sets up the properties for use when registering.
+	 *
+	 * @method __construct
+	 * @since  0.2.2
+	 * @param  array $args   The array of args to use when registering the CPT.
+	 * @param  array $labels A custom labels array to use when registering the
+	 *                       post. NOTE: If you are passing a custom $args array
+	 *                       then this will not be included automatticaly so
+	 *                       include it in $args['labels'] directly.
+	 */
+	public function __construct( array $args = [], array $labels = [] ) {
+		$this->labels = ( ! empty( $labels ) ) ? $labels : $this->get_labels();
+		$this->args   = ( ! empty( $args ) ) ? $args : $this->get_args();
+	}
 
 	/**
 	 * Hook in and register the post type.
@@ -81,7 +104,7 @@ abstract class AbstractPostType {
 	public function get_labels() {
 
 		return ( ! empty( $this->labels ) ) ? $this->labels : [
-			'name' => ucfirst( $this->name ),
+			'name' => ucwords( $this->name ),
 		];
 	}
 
@@ -101,6 +124,7 @@ abstract class AbstractPostType {
 			'post_type' => $name,
 			'label'     => $name,
 			'labels'    => $labels,
+			'menu_icon' => ( ! empty( $this->icon ) ) ? $this->icon : 'dashicons-admin-post',
 			'public'    => true,
 		];
 	}

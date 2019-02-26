@@ -26,3 +26,10 @@ _No documentation available about unreleased changes as of yet._
 ## [0.2.1] - 2019-02-10
 
 - Changed where the uppercase first letter when backfilling is done for 'label'
+
+## [0.2.2] - 2019-02-26
+
+### Added
+
+- Added a class constructor method to handle setup of properties at instantiation for overriding defaults.
+- Add menu_icon option to class.
